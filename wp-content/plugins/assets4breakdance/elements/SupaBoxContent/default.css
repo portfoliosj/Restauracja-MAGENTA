@@ -1,0 +1,7 @@
+.breakdance .supabox-content {
+  display:flex;
+  flex-wrap:nowrap;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}

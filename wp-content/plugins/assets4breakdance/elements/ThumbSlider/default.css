@@ -1,0 +1,65 @@
+.breakdance .thumbslider {
+  max-width: 100%;
+  position: relative;
+  --spacetoedge: 0;
+  --horizontalspacing: 0;
+  --verticalspacing: 0;
+}
+.breakdance .thumbslider swiper-slide {
+  display: flex;
+  overflow: hidden;
+}
+.breakdance .thumbslider img {
+  width: 100%;
+  vertical-align: top;
+  object-fit: cover;
+  transition: 0.6s ease opacity;
+}
+.breakdance .thumbslider .thumbslider-container {
+  position: relative;
+  overflow: hidden;
+}
+.breakdance .thumbslider .thumbslider-thumbcontainer {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.breakdance .thumbslider .thumbslider-left,
+.breakdance .thumbslider .thumbslider-right {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translatey(-50%);
+  cursor: pointer;
+}
+.breakdance .thumbslider .thumbslider-left {
+  left: var(--spacetoedge);
+}
+.breakdance .thumbslider .thumbslider-right {
+  right: var(--spacetoedge);
+}
+.breakdance .thumbslider .thumbnailslider swiper-slide {
+  overflow: hidden;
+}
+.breakdance .thumbslider .thumbnailslider swiper-slide img {
+  opacity: 0.5;
+  cursor: pointer;
+  overflow: hidden;
+}
+.breakdance .thumbslider .thumbnailslider swiper-slide.swiper-slide-thumb-active img {
+  opacity: 1;
+}
+.breakdance .thumbslider .swiper-button-disabled {
+  opacity: 0.2;
+  cursor: auto;
+  pointer-events: none;
+}
+.breakdance .thumbslider .thumbslider-caption {
+  position: absolute;
+  z-index: 10;
+}
+.breakdance .thumbslider .thumbslider-link {
+  width: 100%;
+}
