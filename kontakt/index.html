@@ -83,7 +83,7 @@ var FOOBOX = window.FOOBOX = {
 
 <link rel="stylesheet" href="https://portfoliosj.github.io/Restauracja-MAGENTA/wp-content/uploads/breakdance/css/presets.css?v=2e33ef47840b4ff902d7d8c7f5ceca90">
 
-<link rel="stylesheet" href="https://portfoliosj.github.io/Restauracja-MAGENTA/wp-content/uploads/breakdance/css/post-93.css?v=65d6ea469371edbc947ab675342d1181">
+<link rel="stylesheet" href="https://portfoliosj.github.io/Restauracja-MAGENTA/wp-content/uploads/breakdance/css/post-93.css?v=ee8d67bac03d1d36b8ebccfd6d0eebbe">
 <!-- [/EOF HEADER ASSETS] -->
     </head>
     
@@ -266,7 +266,7 @@ Magenta
 
 <div class="section-container"><div class="bde-text-93-125 bde-text">
 Kontakt
-</div><div class="bde-div-93-326 bde-div">
+</div><div id="formularz-kontener" class="bde-div-93-326 bde-div">
   
   
 	
@@ -282,37 +282,96 @@ Kontakt
 
 <div class="bde-text-93-322 bde-text">
 Masz jakieś pytania? Może chciałbyś wyrazić nam swoją opinię? Zapraszamy do kontaktu!
-</div><div class="bde-supacode-block-93-338 bde-supacode-block">
-  <form action="https://formspree.io/f/xljgpngq" method="POST">
+</div><div id="contact-form" class="bde-supacode-block-93-338 bde-supacode-block">
+  <form id="wlasciwy-formularz" action="https://formspree.io/f/xljgpngq" method="POST">
   <label>
     Imię i nazwisko
     <br>
-    <input type="text" name="imienazwisko" class="rubryka" placeholder="Imię i nazwisko" required>
+    <input type="text" name="Imie i nazwisko" class="rubryka" placeholder="Imię i nazwisko" required>
   </label>
   <br>
   <label>
     E-mail
     <br>
-    <input type="email" name="email" class="rubryka" placeholder="Adres e-mail" required>
+    <input type="email" name="E-mail" class="rubryka" placeholder="Adres e-mail" required>
   </label>
   <br>
   <label>
     Temat
     <br>
-    <input type="text" name="wiadomosc" class="rubryka" placeholder="Temat" required>
+    <input type="text" name="Temat" class="rubryka" placeholder="Temat" required>
   </label>
   <br>
   <label>
     Wiadomość
     <br>
-    <textarea name="message" class="rubryka" placeholder="Twoja wiadomość" required></textarea>
+    <textarea name="Wiadomosc" class="rubryka" placeholder="Twoja wiadomość" required></textarea>
   </label>
   <br>
+  <p id="form-status" role="status" aria-live="polite"></p>
   <button type="submit" class="wyslij">Wyślij</button>
 </form>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+   const form = document.querySelector("#wlasciwy-formularz");
+    const container = document.querySelector("#formularz-kontener");
+    const success = document.querySelector("#formularz-sukces");
+
+    console.log("Formularz:", form);
+    console.log("Kontener:", container);
+    console.log("Sukces:", success);
+
+    if (!form || !container || !success) {
+      console.error("Brakuje któregoś elementu formularza.");
+      return;
+    }
+
+    const status = form.querySelector("#form-status");
+    const button = form.querySelector('button[type="submit"]');
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      button.disabled = true;
+      if (status) status.textContent = "Wysyłanie wiadomości...";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error("Błąd HTTP: " + response.status);
+        }
+
+        container.style.display = "none";
+        success.style.display = "block";
+      } catch (error) {
+        console.error("Błąd wysyłania:", error);
+        if (status) {
+          status.textContent = "Nie udało się wysłać wiadomości. Spróbuj ponownie.";
+        }
+        button.disabled = false;
+      }
+    });
+  });
+</script>
+
     </div>
 </div><img class="bde-image2-93-325 bde-image2" src="https://portfoliosj.github.io/Restauracja-MAGENTA/wp-content/uploads/2026/10/3-e1791217808745.jpg" loading="lazy" srcset="https://portfoliosj.github.io/Restauracja-MAGENTA/wp-content/uploads/2026/10/3-e1791217808745.jpg 1007w, https://portfoliosj.github.io/Restauracja-MAGENTA/wp-content/uploads/2026/10/3-e1791217808745-300x300.jpg 300w, https://portfoliosj.github.io/Restauracja-MAGENTA/wp-content/uploads/2026/10/3-e1791217808745-150x150.jpg 150w, https://portfoliosj.github.io/Restauracja-MAGENTA/wp-content/uploads/2026/10/3-e1791217808745-768x768.jpg 768w" sizes="(max-width: 1007px) 100vw, 1007px">
+</div><div id="formularz-sukces" class="bde-div-93-339 bde-div">
+  
+  
+	
+
+
+
+<div class="bde-text-93-340 bde-text">
+Wiadomość wysłana, dziękujemy!
+</div>
 </div><div class="bde-div-93-305 bde-div">
   
   
@@ -375,7 +434,7 @@ Masz jakieś pytania? Może chciałbyś wyrazić nam swoją opinię? Zapraszamy 
 
 
 </div><div class="bde-text-93-312 bde-text">
-magenta69@gmail.com
+restauracja@magenta.pl
 </div>
 </div><div class="bde-div-93-313 bde-div">
   
